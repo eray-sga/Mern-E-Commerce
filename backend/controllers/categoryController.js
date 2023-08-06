@@ -67,7 +67,7 @@ const fetchCategory = async (req, res) => {
     const client = await connect();
     const categoryCollection = client.db('ecommerce').collection('category');
 
-    const response = await categoryCollection.findOne({ _id: ObjectId(id) });
+    const response = await categoryCollection.findOne({ _id: new ObjectId(id) });
 
     if (!response) {
       return res.status(404).json({ error: 'Category not found.' });
